@@ -4,6 +4,11 @@
 
 using namespace std;
 
+struct EVENT_ID
+{
+	static const int EVENT_ID1 = 1;
+	static const int EVENT_ID2 = 2;
+};
 //CUSTOM LISTENER CLASS 
 class Notification : public IListener
 {
@@ -33,12 +38,17 @@ void Notification::onNotify()
 class Work
 {
 	Event work_event;
+	Event work_event_2;
 	
 public:
 	Work()
 	{
 		work_event.EVENT_NAME = "WORK";
+		work_event.EVENT_ID = EVENT_ID::EVENT_ID1;
 		EventManager::getInstance()->SubscribeListener(work_event, new Notification());
+		work_event_2.EVENT_NAME = "WORK2";
+		work_event_2.EVENT_ID = EVENT_ID::EVENT_ID2;
+		EventManager::getInstance()->SubscribeListener(work_event_2, new Notification());
 	}
 
 

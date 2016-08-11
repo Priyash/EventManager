@@ -3,7 +3,6 @@
 
 void Object::registerListener(Event event,IListener* listener)
 {
-	event.EVENT_ID++;
 	object_holder.insert(pair<Event, IListener*>(event, listener));
 }
 
